@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-  selected: ""
+  selected: "",
+  visible: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,7 +10,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         selected: action.payload
       }
-      default:
-        return state;
+      case 'TAB_SHOWED':
+        return {
+          ...state,
+          visible: action.payload
+        }
+        default:
+          return state;
   }
 }
