@@ -20,28 +20,28 @@ Desenvolvido para ajudar no controle de gastos e para aprimorar o conhecimento n
 
 3. **Clone o repositório na pasta desejada e execute o projeto**
 
-```
-# Clone o repositório
-git clone https://github.com/Henriquepb22/my-money-app-react.git`
+    ```shell
+    # Clone o repositório
+    git clone https://github.com/Henriquepb22/my-money-app-react.git`
 
-# Entre na pasta do projeto
-cd my-money-app-react
+    # Entre na pasta do projeto
+    cd my-money-app-react
 
-# Entre na pasta \backend
-cd backend
+    # Entre na pasta \backend
+    cd backend
 
-# Rode o backend
-npm run production
+    # Rode o backend
+    npm run production
 
-# Saia da pasta \backend
-cd ..
+    # Saia da pasta \backend
+    cd ..
 
-# Entre na pasta \frontend
-cd frontend
+    # Entre na pasta \frontend
+    cd frontend
 
-# Rode o frontend
-npm run production
-```
+    # Rode o frontend
+    npm run production
+    ```
 
 Agora abra seu browser e entre no (http://localhost:8080/) e pronto!
 
