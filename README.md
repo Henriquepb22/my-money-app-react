@@ -30,8 +30,9 @@ Desenvolvido para ajudar no controle de gastos e para aprimorar o conhecimento n
     # Entre na pasta \backend
     cd backend
 
-    # Rode o backend
-    npm run production
+    # Instale as dependencias e rode o backend
+    npm i
+    npm run dev
 
     # Saia da pasta \backend
     cd ..
@@ -39,11 +40,12 @@ Desenvolvido para ajudar no controle de gastos e para aprimorar o conhecimento n
     # Entre na pasta \frontend
     cd frontend
 
-    # Rode o frontend
-    npm run production
+    # Instale as dependencias e rode o frontend
+    npm i
+    npm run dev
     ```
 
-- Agora abra seu browser e entre no http://localhost:8080/ e pronto!
+- Agora abra seu browser e entre no http://localhost:3000/ e pronto!
 
 ### :heavy_check_mark: Licença
 - [MIT](https://github.com/Henriquepb22/my-money-app-react/blob/master/LICENSE)
