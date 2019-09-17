@@ -48,7 +48,7 @@ BillingCycle.route('summary', (req, res, next) => {
       credit: 1,
       debt: 1
     }
-  }], (error, result) => {
+  }]).exec((error, result) => {
     if (error) {
       res.status(500).json({
         errors: [error]

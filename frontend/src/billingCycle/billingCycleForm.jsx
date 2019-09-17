@@ -3,7 +3,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { init } from './billingCycleActions';
-import LabelAndInput from '../common/form/LabelAndInput';
+import LabelAndInput from '../common/form/labelAndInput';
 import ItemList from './itemList';
 import Summary from './summary';
 
