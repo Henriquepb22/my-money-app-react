@@ -12,9 +12,9 @@ Desenvolvido para ajudar no controle de gastos e para aprimorar o conhecimento n
 
 1. **Instale o MongoDB e inicie ele na porta 27017**
 
-`mongod --port 27017`
+        `mongod --port 27017`
 
-[Guia de instalação do MongoDB](https://docs.mongodb.com/guides/server/install/)
+        [Guia de instalação do MongoDB](https://docs.mongodb.com/guides/server/install/)
 
 2. **Certifique-se de ter o [NodeJS](https://nodejs.org/en/) instalado na sua máquina**
 
@@ -43,7 +43,7 @@ Desenvolvido para ajudar no controle de gastos e para aprimorar o conhecimento n
     npm run production
     ```
 
-Agora abra seu browser e entre no (http://localhost:8080/) e pronto!
+- Agora abra seu browser e entre no http://localhost:8080/ e pronto!
 
 ### Licença
 [MIT](https://github.com/Henriquepb22/my-money-app-react/blob/master/LICENSE)
