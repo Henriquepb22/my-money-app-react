@@ -46,4 +46,4 @@ Desenvolvido para ajudar no controle de gastos e para aprimorar o conhecimento n
 - Agora abra seu browser e entre no http://localhost:8080/ e pronto!
 
 ### :heavy_check_mark: Licença
-[MIT](https://github.com/Henriquepb22/my-money-app-react/blob/master/LICENSE)
+- [MIT](https://github.com/Henriquepb22/my-money-app-react/blob/master/LICENSE)
