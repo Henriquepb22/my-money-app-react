@@ -11,14 +11,9 @@ class BillingCycleForm extends Component {
 
   calculateSummary() {
     const sum = (t, v) => t + v;
-    if (this.props.credits.length === 0 || this.props.debts.length === 0) {
-      this.props.credits.value = 0;
-      this.props.debts.value = 0;
-    } else {
-      return {
-        sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum),
-        sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
-      }
+    return {
+      sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum),
+      sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
     }
   }
 
