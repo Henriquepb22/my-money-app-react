@@ -1,27 +1,26 @@
 {
-  "name": "my-money-app-react",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/loader.js",
-  "scripts": {
-    "dev": "nodemon",
-    "production": "pm2 start src/loader.js --name my-money-backend"
-  },
-  "author": "Henrique Pereira",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "3.0.0",
-    "body-parser": "1.18.3",
-    "express": "4.16.3",
-    "express-query-int": "3.0.0",
-    "jsonwebtoken": "8.3.0",
-    "lodash": "4.17.13",
-    "mongoose": "5.7.5",
-    "mongoose-paginate": "5.0.3",
-    "node-restful": "0.2.6",
-    "pm2": "3.0.4"
-  },
-  "devDependencies": {
-    "nodemon": "1.18.4"
-  }
+    "name": "my-money-app-react",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/loader.js",
+    "scripts": {
+        "dev": "nodemon",
+        "production": "pm2 start src/loader.js --name my-money-backend"
+    },
+    "author": "Henrique Pereira",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^4.0.1",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "express-query-int": "^3.0.0",
+        "jsonwebtoken": "^8.3.0",
+        "lodash": "^4.17.13",
+        "mongoose": "^5.7.5",
+        "mongoose-paginate": "^5.0.3",
+        "pm2": "^4.2.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
 }
