@@ -1,71 +1,88 @@
 const BillingCycle = require("../models/billingCycles");
-const errorHandler = require("../controllers/errorHandler");
 
-BillingCycle.methods(["get", "post", "put", "delete"]);
-BillingCycle.updateOptions({
-    new: true,
-    runValidators: true
-});
-BillingCycle.after("post", errorHandler).after("put", errorHandler);
+module.exports = {
+    async show(req, res) {
+        let billing = await BillingCycle.find();
 
-BillingCycle.route("count", (req, res, next) => {
-    BillingCycle.count((error, value) => {
-        if (error) {
-            res.status(500).json({
-                errors: [error]
-            });
-        } else {
-            res.json({
-                value
-            });
-        }
-    });
-});
+        return res.json(billing);
+    },
+    async create(req, res) {
+        const billing = await BillingCycle.create(req.body);
 
-BillingCycle.route("summary", (req, res, next) => {
-    BillingCycle.aggregate([
-        {
-            $project: {
-                credit: {
-                    $sum: "$credits.value"
-                },
-                debt: {
-                    $sum: "$debts.value"
+        return res.json(billing);
+    },
+    async destroy(req, res) {
+        const billing = await BillingCycle.findByIdAndDelete(req.params.id);
+
+        return res.json(billing);
+    },
+    async update(req, res) {
+        const billing = await BillingCycle.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+        return res.json(billing);
+    },
+    async count(req, res) {
+        BillingCycle.count((error, value) => {
+            if (error) {
+                res.status(500).json({
+                    errors: [error]
+                });
+            } else {
+                res.json({
+                    value
+                });
+            }
+        });
+    },
+    async summary(req, res) {
+        BillingCycle.aggregate([
+            {
+                $project: {
+                    credit: {
+                        $sum: "$credits.value"
+                    },
+                    debt: {
+                        $sum: "$debts.value"
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    credit: {
+                        $sum: "$credit"
+                    },
+                    debt: {
+                        $sum: "$debt"
+                    }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    credit: 1,
+                    debt: 1
                 }
             }
-        },
-        {
-            $group: {
-                _id: null,
-                credit: {
-                    $sum: "$credit"
-                },
-                debt: {
-                    $sum: "$debt"
-                }
+        ]).exec((error, result) => {
+            if (error) {
+                res.status(500).json({
+                    errors: [error]
+                });
+            } else {
+                res.json(
+                    result[0] || {
+                        credit: 0,
+                        debt: 0
+                    }
+                );
             }
-        },
-        {
-            $project: {
-                _id: 0,
-                credit: 1,
-                debt: 1
-            }
-        }
-    ]).exec((error, result) => {
-        if (error) {
-            res.status(500).json({
-                errors: [error]
-            });
-        } else {
-            res.json(
-                result[0] || {
-                    credit: 0,
-                    debt: 0
-                }
-            );
-        }
-    });
-});
-
-module.exports = BillingCycle;
+        });
+    }
+};

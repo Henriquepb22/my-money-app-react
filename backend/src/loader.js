@@ -1,3 +1,4 @@
-require("./config/server");
+require("dotenv").config();
+require("./config/auth");
 require("./config/database");
-require("./config/routes");
+require("./config/server");

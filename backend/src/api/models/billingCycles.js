@@ -24,9 +24,9 @@ const debtSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        required: false,
         uppercase: true,
-        enum: ["PAGO", "PENDENTE", "AGENDADO"]
+        enum: ["PAGO", "PENDENTE", "AGENDADO"],
+        required: false
     }
 });
 
@@ -51,4 +51,4 @@ const billingCycleSchema = new mongoose.Schema({
     debts: [debtSchema]
 });
 
-module.exports = model("BillingCycle", billingCycleSchema);
+module.exports = mongoose.model("BillingCycle", billingCycleSchema);

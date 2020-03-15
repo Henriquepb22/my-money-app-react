@@ -1,26 +1,34 @@
-const express = require("express");
+const { Router } = require("express");
 const auth = require("./auth");
 
-module.exports = function(server) {
-    /*
-     * Rotas protegidas por Token JWT
-     */
-    const protectedApi = express.Router();
-    server.use("/api", protectedApi);
+const BillingCycleController = require("../api/controllers/billingCycleController");
+const AuthService = require("../api/controllers/authService");
 
-    protectedApi.use(auth);
+const routes = Router();
 
-    const BillingCycle = require("../api/controllers/billingCycleController");
-    BillingCycle.register(protectedApi, "/billingCycles");
+routes.post("/login", AuthService.login);
+routes.post("/signup", AuthService.signup);
+routes.post("/validateToken", AuthService.validateToken);
 
-    /*
-     * Rotas abertas
-     */
-    const openApi = express.Router();
-    server.use("/oapi", openApi);
+routes.get(
+    "/billingCycles",
+    AuthService.validateToken,
+    BillingCycleController.show
+);
+routes.post(
+    "/billingCycles",
+    AuthService.validateToken,
+    BillingCycleController.create
+);
+routes.put(
+    "/billingCycles/:id",
+    AuthService.validateToken,
+    BillingCycleController.update
+);
+routes.delete(
+    "/billingCycles/:id",
+    AuthService.validateToken,
+    BillingCycleController.destroy
+);
 
-    const AuthService = require("../api/controllers/authService");
-    openApi.post("/login", AuthService.login);
-    openApi.post("/signup", AuthService.signup);
-    openApi.post("/validateToken", AuthService.validateToken);
-};
+module.exports = routes;
