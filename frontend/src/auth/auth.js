@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -11,85 +11,81 @@ import Input from "../common/form/inputAuth";
 
 import "./auth.css";
 
-class Auth extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { loginMode: true };
+let Auth = props => {
+    const [isLoginMode, setIsLoginMode] = useState(false);
+    const { handleSubmit } = props;
+
+    function onSubmit(values) {
+        const { login, signup } = props;
+        isLoginMode ? login(values) : signup(values);
     }
 
-    changeMode() {
-        this.setState({ loginMode: !this.state.loginMode });
-    }
-
-    onSubmit(values) {
-        const { login, signup } = this.props;
-        this.state.loginMode ? login(values) : signup(values);
-    }
-
-    render() {
-        const { loginMode } = this.state;
-        const { handleSubmit } = this.props;
-        return (
-            <div className="login-box">
-                <div className="login-logo">
-                    <b> My</b> Money
-                </div>
-                <div className="login-box-body">
-                    <p className="login-box-msg">Bem vindo!</p>
-                    <form onSubmit={handleSubmit(v => this.onSubmit(v))}>
-                        <Field
-                            component={Input}
-                            type="input"
-                            name="name"
-                            placeholder="Nome"
-                            icon="user"
-                            hide={loginMode}
-                        />
-                        <Field
-                            component={Input}
-                            type="email"
-                            name="email"
-                            placeholder="E-mail"
-                            icon="envelope"
-                        />
-                        <Field
-                            component={Input}
-                            type="password"
-                            name="password"
-                            placeholder="Senha"
-                            icon="lock"
-                        />
-                        <Field
-                            component={Input}
-                            type="password"
-                            name="confirm_password"
-                            placeholder="Confirmar Senha"
-                            icon="lock"
-                            hide={loginMode}
-                        />
-                        <Row>
-                            <Grid cols="4">
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-block btn-flat"
-                                >
-                                    {loginMode ? "Entrar" : "Registrar"}
-                                </button>
-                            </Grid>
-                        </Row>
-                    </form>
-                    <br />
-                    <button onClick={() => this.changeMode()}>
-                        {loginMode
+    return (
+        <div className="login-box">
+            <div className="login-logo">
+                <span>
+                    <strong> My</strong> Money
+                </span>
+            </div>
+            <div className="login-box-body">
+                <p className="login-box-msg">Bem vindo!</p>
+                <form onSubmit={handleSubmit(e => onSubmit(e))}>
+                    <Field
+                        component={Input}
+                        type="input"
+                        name="name"
+                        placeholder="Nome"
+                        icon="user"
+                        hide={!isLoginMode}
+                    />
+                    <Field
+                        component={Input}
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        icon="envelope"
+                    />
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="password"
+                        placeholder="Senha"
+                        icon="lock"
+                    />
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirmar Senha"
+                        icon="lock"
+                        hide={!isLoginMode}
+                    />
+                    <Row>
+                        <Grid cols="4">
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-block btn-flat"
+                            >
+                                <span>
+                                    {!isLoginMode ? "Entrar" : "Registrar"}
+                                </span>
+                            </button>
+                        </Grid>
+                    </Row>
+                </form>
+                <br />
+                <button onClick={e => setIsLoginMode(!isLoginMode)}>
+                    <span>
+                        {!isLoginMode
                             ? "Novo usuário? Registrar aqui!"
                             : "Já é cadastrado? Entrar aqui!"}
-                    </button>
-                </div>
-                <Messages />
+                    </span>
+                </button>
             </div>
-        );
-    }
-}
+            <Messages />
+        </div>
+    );
+};
 
 Auth = reduxForm({ form: "authForm" })(Auth);
 const mapDispatchToProps = dispatch =>

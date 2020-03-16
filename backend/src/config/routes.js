@@ -16,5 +16,6 @@ routes.get("/billingCycles", BillingCycleController.show);
 routes.post("/billingCycles", BillingCycleController.create);
 routes.put("/billingCycles/:id", BillingCycleController.update);
 routes.delete("/billingCycles/:id", BillingCycleController.destroy);
+routes.get("/billingCycles/summary", BillingCycleController.summary);
 
 module.exports = routes;

@@ -1,7 +1,7 @@
 import { toastr } from "react-redux-toastr";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3003/api";
+const BASE_URL = "http://localhost:3003";
 
 export function login(values) {
     return submit(values, `${BASE_URL}/login`);
