@@ -19,34 +19,27 @@ module.exports = {
         const email = req.body.email || "";
         const password = req.body.password || "";
 
-        User.findOne(
-            {
-                email
-            },
-            (err, user) => {
-                if (err) {
-                    return sendErrorsFromDB(res, err);
-                } else if (
-                    user &&
-                    bcrypt.compareSync(password, user.password)
-                ) {
-                    const token = jwt.sign({ ...user }, process.env.SECRET, {
-                        expiresIn: "1 day"
-                    });
-                    const { name, email } = user;
-                    res.json({
-                        name,
-                        email,
-                        token
-                    });
-                } else {
-                    return res.status(400).send({
-                        errors: ["Usuário/Senha inválidos"]
-                    });
-                }
+        User.findOne({ email }, (err, user) => {
+            if (err) {
+                return sendErrorsFromDB(res, err);
+            } else if (user && bcrypt.compareSync(password, user.password)) {
+                const token = jwt.sign({ ...user }, process.env.SECRET, {
+                    expiresIn: "1 day"
+                });
+                const { name, email } = user;
+                res.json({
+                    name,
+                    email,
+                    token
+                });
+            } else {
+                return res.status(400).send({
+                    errors: ["Usuário/Senha inválidos"]
+                });
             }
-        );
+        });
     },
+
     async validateToken(req, res, next) {
         const token = req.body.token || "";
 
@@ -88,32 +81,38 @@ module.exports = {
             });
         }
 
-        await User.findOne(
-            {
-                email
-            },
-            (err, user) => {
-                if (err) {
-                    return sendErrorsFromDB(res, err);
-                } else if (user) {
-                    return res.status(400).send({
-                        errors: ["Usuário já cadastrado."]
-                    });
-                } else {
-                    const newUser = new User({
-                        name,
-                        email,
-                        password: passwordHash
-                    });
-                    newUser.save(err => {
-                        if (err) {
-                            return sendErrorsFromDB(res, err);
-                        } else {
-                            return res.json("Cadastrado com sucesso");
-                        }
-                    });
-                }
+        await User.findOne({ email }, (err, user) => {
+            if (err) {
+                return sendErrorsFromDB(res, err);
+            } else if (user) {
+                return res.status(400).send({
+                    errors: ["Usuário já cadastrado."]
+                });
+            } else {
+                const newUser = new User({
+                    name,
+                    email,
+                    password: passwordHash
+                });
+                newUser.save((err, user) => {
+                    if (err) {
+                        return sendErrorsFromDB(res, err);
+                    } else {
+                        const token = jwt.sign(
+                            { ...user },
+                            process.env.SECRET,
+                            {
+                                expiresIn: "1 day"
+                            }
+                        );
+                        return res.json({
+                            name,
+                            email,
+                            token
+                        });
+                    }
+                });
             }
-        );
+        });
     }
 };

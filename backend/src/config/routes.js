@@ -10,25 +10,11 @@ routes.post("/login", AuthService.login);
 routes.post("/signup", AuthService.signup);
 routes.post("/validateToken", AuthService.validateToken);
 
-routes.get(
-    "/billingCycles",
-    AuthService.validateToken,
-    BillingCycleController.show
-);
-routes.post(
-    "/billingCycles",
-    AuthService.validateToken,
-    BillingCycleController.create
-);
-routes.put(
-    "/billingCycles/:id",
-    AuthService.validateToken,
-    BillingCycleController.update
-);
-routes.delete(
-    "/billingCycles/:id",
-    AuthService.validateToken,
-    BillingCycleController.destroy
-);
+routes.use(auth);
+
+routes.get("/billingCycles", BillingCycleController.show);
+routes.post("/billingCycles", BillingCycleController.create);
+routes.put("/billingCycles/:id", BillingCycleController.update);
+routes.delete("/billingCycles/:id", BillingCycleController.destroy);
 
 module.exports = routes;
