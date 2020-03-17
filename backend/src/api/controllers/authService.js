@@ -44,15 +44,9 @@ module.exports = {
         const token = req.body.token || "";
 
         jwt.verify(token, process.env.SECRET, (err, decoded) => {
-            if (err) {
-                return res.status(401).send({
-                    valid: !err
-                });
-            } else {
-                return res.json({
-                    token
-                });
-            }
+            return res.status(201).send({
+                valid: !err
+            });
         });
     },
 
