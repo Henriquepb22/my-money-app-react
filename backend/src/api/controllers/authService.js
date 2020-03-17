@@ -46,10 +46,12 @@ module.exports = {
         jwt.verify(token, process.env.SECRET, (err, decoded) => {
             if (err) {
                 return res.status(401).send({
-                    valid: err
+                    valid: !err
                 });
             } else {
-                next();
+                return res.json({
+                    token
+                });
             }
         });
     },

@@ -17,7 +17,7 @@ let Auth = props => {
 
     function onSubmit(values) {
         const { login, signup } = props;
-        isLoginMode ? login(values) : signup(values);
+        !isLoginMode ? login(values) : signup(values);
     }
 
     return (

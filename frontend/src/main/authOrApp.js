@@ -14,9 +14,8 @@ const AuthOrApp = props => {
     }
 
     const { user, validToken } = props.auth;
-    console.log(user + validToken);
     if (user && validToken) {
-        axios.defaults.header.common["authorization"] = user.token;
+        axios.defaults.headers.common["authorization"] = user.token;
         return <App>{props.children}</App>;
     } else if (!user && !validToken) {
         return <Auth />;
