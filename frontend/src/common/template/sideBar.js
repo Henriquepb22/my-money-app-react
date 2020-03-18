@@ -3,10 +3,18 @@ import React from "react";
 import Menu from "./menu";
 
 const SideBar = () => (
-    <aside className="main-sidebar">
-        <section className="sidebar">
+    <aside className="main-sidebar sidebar-dark-primary">
+        <a href="/#" className="brand-link logo-switch">
+            <span className="brand-text-xs logo-xs font-weight-light">
+                MyM <i className="nav-icon fa fa-money"></i>
+            </span>
+            <span className="brand-text-xl logo-xl font-weight-light">
+                My Money <i className="nav-icon fa fa-money"></i>
+            </span>
+        </a>
+        <div className="sidebar mt-2">
             <Menu />
-        </section>
+        </div>
     </aside>
 );
 

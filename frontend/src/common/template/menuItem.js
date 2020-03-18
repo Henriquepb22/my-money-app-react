@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MenuItem = props => (
-    <li>
-        <Link to={props.path}>
-            <i className={`fa fa-${props.icon}`}></i> <span>{props.label}</span>
+    <li className="nav-item">
+        <Link to={props.path} className="nav-link">
+            <i className={`nav-icon fa fa-${props.icon}`}></i>{" "}
+            <span>{props.label}</span>
         </Link>
     </li>
 );

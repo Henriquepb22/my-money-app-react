@@ -17,53 +17,53 @@ class Navbar extends Component {
     render() {
         const { name, email } = this.props.user;
         return (
-            <div className="navbar-custom-menu">
-                <ul className="nav navbar-nav">
-                    <li
-                        onMouseLeave={() => this.changeOpen()}
-                        className={`dropdown user user-menu ${
-                            this.state.open ? "open" : ""
+            <ul className="navbar-nav ml-auto">
+                <li
+                    onMouseLeave={() => this.changeOpen()}
+                    className="dropdown user user-menu"
+                >
+                    <a
+                        href="#/"
+                        onClick={() => this.changeOpen()}
+                        className="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >
+                        <img
+                            src="http://lorempixel.com/160/160/abstract"
+                            className="user-image"
+                            alt="User profile"
+                        />
+                        <span className="hidden-xs">{name}</span>
+                    </a>
+                    <ul
+                        className={`dropdown-menu dropdown-menu-lg dropdown-menu-right ${
+                            this.state.open ? "show" : ""
                         }`}
                     >
-                        <button
-                            onClick={() => this.changeOpen()}
-                            aria-expanded={this.state.open ? "true" : "false"}
-                            className="dropdown-toggle"
-                            data-toggle="dropdown"
-                        >
+                        <li className="dropdown-header">
                             <img
                                 src="http://lorempixel.com/160/160/abstract"
-                                className="user-image"
-                                alt="User profile"
+                                className="img-circle"
+                                alt="User"
                             />
-                            <span className="hidden-xs">{name}</span>
-                        </button>
-                        <ul className="dropdown-menu">
-                            <li className="user-header">
-                                <img
-                                    src="http://lorempixel.com/160/160/abstract"
-                                    className="img-circle"
-                                    alt="User"
-                                />
-                                <p>
-                                    {name}
-                                    <small>{email}</small>
-                                </p>
-                            </li>
-                            <li className="user-footer">
-                                <div className="pull-right">
-                                    <button
-                                        onClick={this.props.logout}
-                                        className="btn btn-default btn-flat"
-                                    >
-                                        Sair
-                                    </button>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                            <p>{name}</p>
+                            <span>
+                                <small> {email}</small>
+                            </span>
+                        </li>
+                        <li className="user-footer">
+                            <div className="pull-right">
+                                <button
+                                    onClick={this.props.logout}
+                                    className="btn btn-default btn-flat"
+                                >
+                                    Sair
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         );
     }
 }
