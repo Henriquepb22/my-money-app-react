@@ -12,12 +12,12 @@ import Input from "../common/form/inputAuth";
 import "./auth.css";
 
 let Auth = props => {
-    const [isLoginMode, setIsLoginMode] = useState(false);
+    const [isLoginMode, setIsLoginMode] = useState(true);
     const { handleSubmit } = props;
 
     function onSubmit(values) {
         const { login, signup } = props;
-        !isLoginMode ? login(values) : signup(values);
+        isLoginMode ? login(values) : signup(values);
     }
 
     return (
@@ -36,7 +36,7 @@ let Auth = props => {
                         name="name"
                         placeholder="Nome"
                         icon="user"
-                        hide={!isLoginMode}
+                        hide={isLoginMode}
                     />
                     <Field
                         component={Input}
@@ -58,7 +58,7 @@ let Auth = props => {
                         name="confirmPassword"
                         placeholder="Confirmar Senha"
                         icon="lock"
-                        hide={!isLoginMode}
+                        hide={isLoginMode}
                     />
                     <Row>
                         <Grid cols="4">
@@ -67,7 +67,7 @@ let Auth = props => {
                                 className="btn btn-primary btn-block btn-flat"
                             >
                                 <span>
-                                    {!isLoginMode ? "Entrar" : "Registrar"}
+                                    {isLoginMode ? "Entrar" : "Registrar"}
                                 </span>
                             </button>
                         </Grid>
@@ -76,7 +76,7 @@ let Auth = props => {
                 <br />
                 <button onClick={e => setIsLoginMode(!isLoginMode)}>
                     <span>
-                        {!isLoginMode
+                        {isLoginMode
                             ? "Novo usuário? Registrar aqui!"
                             : "Já é cadastrado? Entrar aqui!"}
                     </span>

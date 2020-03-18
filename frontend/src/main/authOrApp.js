@@ -19,6 +19,8 @@ const AuthOrApp = props => {
         return <App>{props.children}</App>;
     } else if (!user && !validToken) {
         return <Auth />;
+    } else {
+        return null;
     }
 };
 
