@@ -1,5 +1,5 @@
 import React from "react";
 
-const Tabs = props => <div className="nav-tabs-custom">{props.children}</div>;
+const Tabs = props => <div className="card">{props.children}</div>;
 
 export default Tabs;

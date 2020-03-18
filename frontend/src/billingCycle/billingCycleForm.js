@@ -7,6 +7,7 @@ import { init } from "./billingCycleActions";
 import LabelAndInput from "../common/form/labelAndInput";
 import ItemList from "./itemList";
 import Summary from "./summary";
+import Row from "../common/layout/row";
 
 class BillingCycleForm extends Component {
     calculateSummary() {
@@ -24,7 +25,7 @@ class BillingCycleForm extends Component {
         const { sumOfCredits, sumOfDebts } = this.calculateSummary();
         return (
             <form onSubmit={handleSubmit}>
-                <div className="box-body">
+                <div className="box-body p-2">
                     <Field
                         name="name"
                         component={LabelAndInput}
@@ -52,21 +53,23 @@ class BillingCycleForm extends Component {
                         placeholder="Informe o ano"
                     />
                     <Summary credit={sumOfCredits} debt={sumOfDebts} />
-                    <ItemList
-                        cols="12 6"
-                        list={credits}
-                        readOnly={readOnly}
-                        field="credits"
-                        legend="Créditos"
-                    />
-                    <ItemList
-                        cols="12 6"
-                        list={debts}
-                        readOnly={readOnly}
-                        field="debts"
-                        legend="Débitos"
-                        showStatus={true}
-                    />
+                    <Row>
+                        <ItemList
+                            cols="12 6"
+                            list={credits}
+                            readOnly={readOnly}
+                            field="credits"
+                            legend="Créditos"
+                        />
+                        <ItemList
+                            cols="12 6"
+                            list={debts}
+                            readOnly={readOnly}
+                            field="debts"
+                            legend="Débitos"
+                            showStatus={true}
+                        />
+                    </Row>
                 </div>
                 <div className="box-footer">
                     <button

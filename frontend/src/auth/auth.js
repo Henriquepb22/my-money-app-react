@@ -61,7 +61,7 @@ let Auth = props => {
                         hide={isLoginMode}
                     />
                     <Row>
-                        <Grid cols="4">
+                        <Grid cols="12 12 4">
                             <button
                                 type="submit"
                                 className="btn btn-primary btn-block btn-flat"
