@@ -17,7 +17,7 @@ class Dashboard extends Component {
         const { credit, debt } = this.props.summary;
         return (
             <div>
-                <ContentHeader title="Dashboard" small="Versão 1.0" />
+                <ContentHeader title="Dashboard" small="Versão 2.0" />
                 <Content>
                     <Row>
                         <ValueBox

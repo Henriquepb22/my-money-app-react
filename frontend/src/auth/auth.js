@@ -74,13 +74,13 @@ let Auth = props => {
                     </Row>
                 </form>
                 <br />
-                <button onClick={e => setIsLoginMode(!isLoginMode)}>
+                <a href="/#" onClick={e => setIsLoginMode(!isLoginMode)}>
                     <span>
                         {isLoginMode
                             ? "Novo usuário? Registrar aqui!"
                             : "Já é cadastrado? Entrar aqui!"}
                     </span>
-                </button>
+                </a>
             </div>
             <Messages />
         </div>

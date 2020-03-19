@@ -11,12 +11,14 @@ import Row from "../common/layout/row";
 
 class BillingCycleForm extends Component {
     calculateSummary() {
-        const sum = (t, v) => t + v;
+        const sum = (total, value) => total + value;
         return {
             sumOfCredits: this.props.credits
-                .map(c => +c.value || 0)
+                .map(credits => +credits.value || 0)
                 .reduce(sum),
-            sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
+            sumOfDebts: this.props.debts
+                .map(debts => +debts.value || 0)
+                .reduce(sum)
         };
     }
 

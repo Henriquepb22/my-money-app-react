@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => (
     <footer className="main-footer">
         <strong>
-            Henrique Pereira &copy; 2019
+            Henrique Pereira &copy; 2020
             <a
                 href="http://github.com/henriquepb22"
                 target="_blank"

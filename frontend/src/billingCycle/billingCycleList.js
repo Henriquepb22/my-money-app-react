@@ -11,21 +11,21 @@ class BillingCycleList extends Component {
 
     renderRows() {
         const list = this.props.list || [];
-        return list.map(bc => (
-            <tr key={bc._id}>
-                <th>{bc.name}</th>
-                <th>{bc.month}</th>
-                <th>{bc.year}</th>
+        return list.map(cycles => (
+            <tr key={cycles._id}>
+                <th>{cycles.name}</th>
+                <th>{cycles.month}</th>
+                <th>{cycles.year}</th>
                 <th>
                     <button
                         className="btn btn-warning"
-                        onClick={() => this.props.showUpdate(bc)}
+                        onClick={() => this.props.showUpdate(cycles)}
                     >
                         <i className="fa fa-pencil"></i>
                     </button>
                     <button
                         className="btn btn-danger"
-                        onClick={() => this.props.showDelete(bc)}
+                        onClick={() => this.props.showDelete(cycles)}
                     >
                         <i className="fa fa-trash-o"></i>
                     </button>

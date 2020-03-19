@@ -1,9 +1,16 @@
 .wrapper {
-    background-color: #fff !important;
+    background: #fff;
 }
 
 .login-box-body {
     background-color: #eee;
+    padding: 20px;
+}
+
+.login-box {
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    margin: auto;
 }
 
 .login-box button {
