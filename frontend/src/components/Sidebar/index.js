@@ -2,7 +2,7 @@ import React from "react";
 
 import Menu from "../Menu";
 
-const SideBar = () => (
+const Sidebar = () => (
     <aside className="main-sidebar sidebar-dark-primary">
         <a href="/#" className="brand-link logo-switch">
             <span className="brand-text-xs logo-xs font-weight-light">MyM</span>
@@ -16,4 +16,4 @@ const SideBar = () => (
     </aside>
 );
 
-export default SideBar;
+export default Sidebar;
