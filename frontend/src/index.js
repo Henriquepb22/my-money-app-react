@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 
 import * as serviceWorker from "./serviceWorker";
 import AuthOrApp from "./main/authOrApp";
-import reducers from "./main/reducers";
+import reducers from "./reducers/reducers";
 
 const devTools =
     window.__REDUX_DEVTOOLS_EXTENSION__ &&

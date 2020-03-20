@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 
-import Dashboard from "../dashboard/dashboard";
-import BillingCycle from "../billingCycle/billingCycle";
+import Dashboard from "../pages/Dashboard";
+import BillingCycle from "../pages/BillingCycle";
 
 const Routes = () => (
     <div className="content-wrapper">

@@ -1,12 +1,12 @@
-import "../common/template/dependencies";
+import "./dependencies";
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import App from "./app";
-import Auth from "../auth/auth";
-import { validateToken } from "../auth/authActions";
+import Auth from "../pages/Auth";
+import { validateToken } from "../actions/authActions";
 
 const AuthOrApp = props => {
     if (props.auth.user) {
