@@ -1,5 +1,7 @@
 # :money_with_wings: My Money App
 
+Atualizado dia 19/03/2020 com novas funcionalidades do React(Hooks).
+
 ## :pencil: Sobre
 App desenvolvido para ser um auxiliador de controle financeiro usando as seguintes tecnologias:
 - [ReactJS](https://pt-br.reactjs.org/)
